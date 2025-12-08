@@ -5,10 +5,9 @@
 [![Neovim](https://img.shields.io/badge/Neovim-0.9%2B-7e98e8.svg?style=for-the-badge&logo=neovim)](https://neovim.io/)
 ![Lua](https://img.shields.io/badge/Made%20with%20Lua-8faf77.svg?style=for-the-badge&logo=lua)
 
+**A dark Neovim colorscheme based on habamax, easier on the eyes.**
+
 <img width="1920" alt="2025-12-08-153645_hyprshot" src="https://github.com/user-attachments/assets/8ff9e2a6-e74e-43fa-bbea-49b7ac951156" />
-
-
-A dark Neovim colorscheme based on habamax, easier on the eyes.
 
 </div>
 
