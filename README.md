@@ -47,6 +47,10 @@ Or in Vimscript:
 colorscheme hubbamax
 ```
 
+## Using this with Ghostty
+
+To use this colorscheme with [Ghostty](https://ghostty.org/), copy `hubbamax.ghostty` to your Ghostty themes folder (usually `~/.ghostty/themes/`), and select it in your Ghostty configuration.
+
 ## License
 
 MIT
