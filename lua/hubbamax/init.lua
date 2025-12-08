@@ -532,3 +532,118 @@ hi("@markup.quote.markdown", { fg = palette.base.gray5.gui, ctermfg = palette.ba
 -- Other
 hi("@punctuation.delimiter.markdown_inline", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
 hi("@punctuation.special.markdown", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
+
+-- Neo-tree highlights
+-- Root and directory
+hi("NeoTreeRootName", {
+	fg = palette.accent.blue_bright.gui,
+	bold = true,
+	ctermfg = palette.accent.blue_bright.cterm,
+	cterm = { bold = true },
+})
+hi("NeoTreeDirectoryName", { fg = palette.accent.cyan_light.gui, ctermfg = palette.accent.cyan_light.cterm })
+hi("NeoTreeDirectoryIcon", { fg = palette.accent.cyan_light.gui, ctermfg = palette.accent.cyan_light.cterm })
+
+-- Files
+hi("NeoTreeFileName", { fg = palette.base.fg.gui, ctermfg = palette.base.fg.cterm })
+hi("NeoTreeFileNameOpened", {
+	fg = palette.accent.blue_bright.gui,
+	bold = true,
+	ctermfg = palette.accent.blue_bright.cterm,
+	cterm = { bold = true },
+})
+
+-- Symbolic links
+hi("NeoTreeSymbolicLinkTarget", { fg = palette.accent.purple.gui, ctermfg = palette.accent.purple.cterm })
+
+-- Git status
+hi("NeoTreeGitAdded", { fg = palette.accent.green_bright.gui, ctermfg = palette.accent.green_bright.cterm })
+hi("NeoTreeGitModified", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
+hi("NeoTreeGitDeleted", { fg = palette.accent.red_bright.gui, ctermfg = palette.accent.red_bright.cterm })
+hi("NeoTreeGitRenamed", { fg = palette.accent.yellow_bright.gui, ctermfg = palette.accent.yellow_bright.cterm })
+hi("NeoTreeGitUntracked", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
+hi("NeoTreeGitIgnored", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
+hi("NeoTreeGitConflict", {
+	fg = palette.accent.red.gui,
+	bold = true,
+	ctermfg = palette.accent.red.cterm,
+	cterm = { bold = true },
+})
+hi("NeoTreeGitUnstaged", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
+hi("NeoTreeGitStaged", { fg = palette.accent.green.gui, ctermfg = palette.accent.green.cterm })
+
+-- Indentation
+hi("NeoTreeIndentMarker", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
+hi("NeoTreeExpander", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
+
+-- Window UI
+hi("NeoTreeNormal", { fg = palette.base.fg.gui, bg = palette.base.bg.gui, ctermfg = palette.base.fg.cterm, ctermbg = palette.base.bg.cterm })
+hi("NeoTreeNormalNC", { fg = palette.base.fg.gui, bg = palette.base.bg.gui, ctermfg = palette.base.fg.cterm, ctermbg = palette.base.bg.cterm })
+hi("NeoTreeSignColumn", { bg = palette.base.bg.gui, ctermbg = palette.base.bg.cterm })
+hi("NeoTreeCursorLine", { bg = palette.base.gray2.gui, ctermbg = palette.base.gray2.cterm })
+
+-- Title bar
+hi("NeoTreeTitleBar", {
+	fg = palette.base.bg.gui,
+	bg = palette.accent.blue.gui,
+	bold = true,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.accent.blue.cterm,
+	cterm = { bold = true },
+})
+
+-- Floating windows
+hi("NeoTreeFloatBorder", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
+hi("NeoTreeFloatTitle", {
+	fg = palette.accent.blue_bright.gui,
+	bold = true,
+	ctermfg = palette.accent.blue_bright.cterm,
+	cterm = { bold = true },
+})
+
+-- Diagnostics
+hi("NeoTreeDiagnosticError", { fg = palette.accent.red.gui, ctermfg = palette.accent.red.cterm })
+hi("NeoTreeDiagnosticWarn", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
+hi("NeoTreeDiagnosticInfo", { fg = palette.accent.blue_bright.gui, ctermfg = palette.accent.blue_bright.cterm })
+hi("NeoTreeDiagnosticHint", { fg = palette.accent.cyan.gui, ctermfg = palette.accent.cyan.cterm })
+
+-- Buffer tabs
+hi("NeoTreeTabActive", {
+	fg = palette.base.bg.gui,
+	bg = palette.accent.blue.gui,
+	bold = true,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.accent.blue.cterm,
+	cterm = { bold = true },
+})
+hi("NeoTreeTabInactive", {
+	fg = palette.base.gray5.gui,
+	bg = palette.base.gray2.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = palette.base.gray2.cterm,
+})
+hi("NeoTreeTabSeparatorActive", { fg = palette.accent.blue.gui, ctermfg = palette.accent.blue.cterm })
+hi("NeoTreeTabSeparatorInactive", { fg = palette.base.gray2.gui, ctermfg = palette.base.gray2.cterm })
+
+-- File stats
+hi("NeoTreeModified", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
+hi("NeoTreeDimText", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
+
+-- Preview window
+hi("NeoTreePreview", { bg = palette.base.gray1.gui, ctermbg = palette.base.gray1.cterm })
+
+-- Filters
+hi("NeoTreeFilterTerm", {
+	fg = palette.accent.green.gui,
+	bold = true,
+	ctermfg = palette.accent.green.cterm,
+	cterm = { bold = true },
+})
+hi("NeoTreeDotfile", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
+hi("NeoTreeHiddenByName", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
+
+-- File icons (fallback)
+hi("NeoTreeFileIcon", { fg = palette.base.fg.gui, ctermfg = palette.base.fg.cterm })
+
+-- Window picker
+hi("NeoTreeWindowsHidden", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
