@@ -45,11 +45,38 @@ end
 
 -- Highlight links
 local links = {
+	-- UI elements
 	Terminal = "Normal",
 	StatusLineTerm = "StatusLine",
 	StatusLineTermNC = "StatusLineNC",
 	MessageWindow = "Pmenu",
 	PopupSelected = "PmenuSel",
+
+	-- Standard syntax group sub-categories
+	-- These provide colors for common syntax elements
+	Number = "Constant",
+	Boolean = "Constant",
+	Float = "Number",
+	Function = "Identifier",
+	Conditional = "Statement",
+	Repeat = "Statement",
+	Label = "Statement",
+	Operator = "Statement",
+	Keyword = "Statement",
+	Exception = "Statement",
+	Include = "PreProc",
+	Define = "PreProc",
+	Macro = "PreProc",
+	PreCondit = "PreProc",
+	StorageClass = "Type",
+	Structure = "Type",
+	Typedef = "Type",
+	SpecialChar = "Special",
+	Tag = "Special",
+	Delimiter = "Special",
+	SpecialComment = "Special",
+
+	-- Language-specific mappings (from original habamax)
 	javaScriptFunction = "Statement",
 	javaScriptIdentifier = "Statement",
 	sqlKeyword = "Statement",
@@ -343,6 +370,55 @@ hi(
 hi("Added", { fg = palette.accent.green_bright.gui, ctermfg = palette.accent.green_bright.cterm })
 hi("Changed", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
 hi("Removed", { fg = palette.accent.red_bright.gui, ctermfg = palette.accent.red_bright.cterm })
+
+-- Treesitter highlight groups
+-- These provide consistent colors when treesitter is enabled
+hi("@variable", { link = "Identifier" })
+hi("@variable.builtin", { link = "Special" })
+hi("@variable.parameter", { link = "Identifier" })
+hi("@variable.member", { link = "Identifier" })
+hi("@constant", { link = "Constant" })
+hi("@constant.builtin", { link = "Special" })
+hi("@module", { link = "Include" })
+hi("@label", { link = "Label" })
+hi("@string", { link = "String" })
+hi("@string.regexp", { link = "SpecialChar" })
+hi("@string.escape", { link = "SpecialChar" })
+hi("@string.special", { link = "SpecialChar" })
+hi("@character", { link = "Character" })
+hi("@character.special", { link = "SpecialChar" })
+hi("@number", { link = "Number" })
+hi("@boolean", { link = "Boolean" })
+hi("@number.float", { link = "Float" })
+hi("@function", { link = "Function" })
+hi("@function.builtin", { link = "Special" })
+hi("@function.call", { link = "Function" })
+hi("@function.macro", { link = "Macro" })
+hi("@function.method", { link = "Function" })
+hi("@function.method.call", { link = "Function" })
+hi("@constructor", { link = "Special" })
+hi("@operator", { link = "Operator" })
+hi("@keyword", { link = "Keyword" })
+hi("@keyword.function", { link = "Keyword" })
+hi("@keyword.operator", { link = "Keyword" })
+hi("@keyword.return", { link = "Keyword" })
+hi("@keyword.conditional", { link = "Conditional" })
+hi("@keyword.repeat", { link = "Repeat" })
+hi("@keyword.import", { link = "Include" })
+hi("@keyword.exception", { link = "Exception" })
+hi("@type", { link = "Type" })
+hi("@type.builtin", { link = "Type" })
+hi("@type.definition", { link = "Typedef" })
+hi("@type.qualifier", { link = "Keyword" })
+hi("@attribute", { link = "PreProc" })
+hi("@property", { link = "Identifier" })
+hi("@comment", { link = "Comment" })
+hi("@punctuation.delimiter", { link = "Delimiter" })
+hi("@punctuation.bracket", { link = "Delimiter" })
+hi("@punctuation.special", { link = "Special" })
+hi("@tag", { link = "Tag" })
+hi("@tag.attribute", { link = "Identifier" })
+hi("@tag.delimiter", { link = "Delimiter" })
 
 -- Markdown highlights
 -- Headers - descending hierarchy with bold for top levels
