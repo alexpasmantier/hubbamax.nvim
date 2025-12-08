@@ -115,9 +115,15 @@ hi("StatusLineNC", {
 	ctermbg = palette.base.gray5.cterm,
 })
 hi("VertSplit", {
-	fg = palette.base.gray5.gui,
+	fg = palette.base.gray2.gui,
 	bg = palette.base.bg.gui,
-	ctermfg = palette.base.gray5.cterm,
+	ctermfg = palette.base.gray2.cterm,
+	ctermbg = palette.base.bg.cterm,
+})
+hi("WinSeparator", {
+	fg = palette.base.gray2.gui,
+	bg = palette.base.bg.gui,
+	ctermfg = palette.base.gray2.cterm,
 	ctermbg = palette.base.bg.cterm,
 })
 hi("TabLine", {
@@ -220,6 +226,21 @@ hi("PmenuMatchSel", {
 	ctermbg = palette.base.gray4.cterm,
 })
 hi("SignColumn", {})
+hi("NormalFloat", {
+	fg = palette.base.fg.gui,
+	bg = palette.base.bg.gui,
+	ctermfg = palette.base.fg.cterm,
+	ctermbg = palette.base.bg.cterm,
+})
+hi("FloatBorder", { fg = palette.base.gray5.gui, bg = palette.base.bg.gui, ctermfg = palette.base.gray5.cterm, ctermbg = palette.base.bg.cterm })
+hi("FloatTitle", {
+	fg = palette.accent.blue_bright.gui,
+	bg = palette.base.bg.gui,
+	bold = true,
+	ctermfg = palette.accent.blue_bright.cterm,
+	ctermbg = palette.base.bg.cterm,
+	cterm = { bold = true },
+})
 hi("Error", {
 	fg = palette.accent.red.gui,
 	bg = palette.base.bg.gui,
@@ -370,6 +391,59 @@ hi(
 hi("Added", { fg = palette.accent.green_bright.gui, ctermfg = palette.accent.green_bright.cterm })
 hi("Changed", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
 hi("Removed", { fg = palette.accent.red_bright.gui, ctermfg = palette.accent.red_bright.cterm })
+
+-- Neovim-specific UI elements
+hi("WinBar", {
+	fg = palette.base.gray6.gui,
+	bg = palette.base.bg.gui,
+	bold = true,
+	ctermfg = palette.base.gray6.cterm,
+	ctermbg = palette.base.bg.cterm,
+	cterm = { bold = true },
+})
+hi("WinBarNC", { fg = palette.base.gray5.gui, bg = palette.base.bg.gui, ctermfg = palette.base.gray5.cterm, ctermbg = palette.base.bg.cterm })
+hi("Whitespace", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
+
+-- LSP Diagnostics
+hi("DiagnosticError", { fg = palette.accent.red.gui, ctermfg = palette.accent.red.cterm })
+hi("DiagnosticWarn", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
+hi("DiagnosticInfo", { fg = palette.accent.blue_bright.gui, ctermfg = palette.accent.blue_bright.cterm })
+hi("DiagnosticHint", { fg = palette.accent.cyan.gui, ctermfg = palette.accent.cyan.cterm })
+hi("DiagnosticOk", { fg = palette.accent.green.gui, ctermfg = palette.accent.green.cterm })
+
+-- Diagnostic virtual text
+hi("DiagnosticVirtualTextError", { fg = palette.accent.red.gui, ctermfg = palette.accent.red.cterm })
+hi("DiagnosticVirtualTextWarn", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
+hi("DiagnosticVirtualTextInfo", { fg = palette.accent.blue_bright.gui, ctermfg = palette.accent.blue_bright.cterm })
+hi("DiagnosticVirtualTextHint", { fg = palette.accent.cyan.gui, ctermfg = palette.accent.cyan.cterm })
+
+-- Diagnostic underlines
+hi("DiagnosticUnderlineError", { sp = palette.accent.red.gui, undercurl = true, cterm = { underline = true } })
+hi("DiagnosticUnderlineWarn", { sp = palette.accent.orange.gui, undercurl = true, cterm = { underline = true } })
+hi("DiagnosticUnderlineInfo", { sp = palette.accent.blue_bright.gui, undercurl = true, cterm = { underline = true } })
+hi("DiagnosticUnderlineHint", { sp = palette.accent.cyan.gui, undercurl = true, cterm = { underline = true } })
+
+-- Diagnostic signs (gutter)
+hi("DiagnosticSignError", { fg = palette.accent.red.gui, ctermfg = palette.accent.red.cterm })
+hi("DiagnosticSignWarn", { fg = palette.accent.orange.gui, ctermfg = palette.accent.orange.cterm })
+hi("DiagnosticSignInfo", { fg = palette.accent.blue_bright.gui, ctermfg = palette.accent.blue_bright.cterm })
+hi("DiagnosticSignHint", { fg = palette.accent.cyan.gui, ctermfg = palette.accent.cyan.cterm })
+
+-- LSP references
+hi("LspReferenceText", { bg = palette.base.gray3.gui, ctermbg = palette.base.gray3.cterm })
+hi("LspReferenceRead", { bg = palette.base.gray3.gui, ctermbg = palette.base.gray3.cterm })
+hi("LspReferenceWrite", { bg = palette.base.gray3.gui, ctermbg = palette.base.gray3.cterm })
+
+-- LSP semantic tokens
+hi("LspSignatureActiveParameter", {
+	fg = palette.accent.orange.gui,
+	bold = true,
+	ctermfg = palette.accent.orange.cterm,
+	cterm = { bold = true },
+})
+
+-- Inlay hints
+hi("LspInlayHint", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
 
 -- Treesitter highlight groups
 -- These provide consistent colors when treesitter is enabled
