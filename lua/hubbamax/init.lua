@@ -5,15 +5,18 @@
 -- Website:      https://github.com/alexpasmantier/hubbamax.nvim
 -- License:      MIT
 
--- Import color palette
-local palette = require("hubbamax.palette")
+-- Clear existing highlights when reloading
+vim.cmd("hi clear")
+if vim.fn.exists("syntax_on") == 1 then
+	vim.cmd("syntax reset")
+end
 
--- Reset to default Neovim colors (vim.lua)
-vim.cmd("source $VIMRUNTIME/colors/vim.lua")
-
--- Set colorscheme name and background
+-- Set colorscheme name and background (must be done after hi clear)
 vim.g.colors_name = "hubbamax"
 vim.o.background = "dark"
+
+-- Import color palette
+local palette = require("hubbamax.palette")
 
 -- Terminal colors
 local has_termguicolors = vim.fn.has("termguicolors") == 1
@@ -66,71 +69,50 @@ for from, to in pairs(links) do
 end
 
 -- Main highlight groups (GUI/true color)
-hi(
-	"Normal",
-	{
-		fg = palette.base.fg.gui,
-		bg = palette.base.bg.gui,
-		ctermfg = palette.base.fg.cterm,
-		ctermbg = palette.base.bg.cterm,
-	}
-)
-hi(
-	"StatusLine",
-	{
-		fg = palette.base.bg.gui,
-		bg = palette.base.gray6.gui,
-		ctermfg = palette.base.bg.cterm,
-		ctermbg = palette.base.gray6.cterm,
-	}
-)
-hi(
-	"StatusLineNC",
-	{
-		fg = palette.base.bg.gui,
-		bg = palette.base.gray5.gui,
-		ctermfg = palette.base.bg.cterm,
-		ctermbg = palette.base.gray5.cterm,
-	}
-)
-hi(
-	"VertSplit",
-	{
-		fg = palette.base.gray5.gui,
-		bg = palette.base.bg.gui,
-		ctermfg = palette.base.gray5.cterm,
-		ctermbg = palette.base.bg.cterm,
-	}
-)
-hi(
-	"TabLine",
-	{
-		fg = palette.base.bg.gui,
-		bg = palette.base.gray5.gui,
-		ctermfg = palette.base.bg.cterm,
-		ctermbg = palette.base.gray5.cterm,
-	}
-)
-hi(
-	"TabLineFill",
-	{
-		fg = palette.base.bg.gui,
-		bg = palette.base.gray5.gui,
-		ctermfg = palette.base.bg.cterm,
-		ctermbg = palette.base.gray5.cterm,
-	}
-)
-hi(
-	"TabLineSel",
-	{
-		fg = palette.base.bg.gui,
-		bg = palette.base.gray6.gui,
-		bold = true,
-		ctermfg = palette.base.bg.cterm,
-		ctermbg = palette.base.gray6.cterm,
-		cterm = { bold = true },
-	}
-)
+hi("Normal", {
+	fg = palette.base.fg.gui,
+	bg = palette.base.bg.gui,
+	ctermfg = palette.base.fg.cterm,
+	ctermbg = palette.base.bg.cterm,
+})
+hi("StatusLine", {
+	fg = palette.base.bg.gui,
+	bg = palette.base.gray6.gui,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.base.gray6.cterm,
+})
+hi("StatusLineNC", {
+	fg = palette.base.bg.gui,
+	bg = palette.base.gray5.gui,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.base.gray5.cterm,
+})
+hi("VertSplit", {
+	fg = palette.base.gray5.gui,
+	bg = palette.base.bg.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = palette.base.bg.cterm,
+})
+hi("TabLine", {
+	fg = palette.base.bg.gui,
+	bg = palette.base.gray5.gui,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.base.gray5.cterm,
+})
+hi("TabLineFill", {
+	fg = palette.base.bg.gui,
+	bg = palette.base.gray5.gui,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.base.gray5.cterm,
+})
+hi("TabLineSel", {
+	fg = palette.base.bg.gui,
+	bg = palette.base.gray6.gui,
+	bold = true,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.base.gray6.cterm,
+	cterm = { bold = true },
+})
 hi("ToolbarLine", {})
 hi("ToolbarButton", {
 	fg = palette.base.gray5.gui,
@@ -164,73 +146,52 @@ hi("Visual", {
 	ctermbg = palette.base.bg.cterm,
 	cterm = { reverse = true },
 })
-hi(
-	"VisualNOS",
-	{
-		fg = palette.base.bg.gui,
-		bg = palette.accent.cyan.gui,
-		ctermfg = palette.base.bg.cterm,
-		ctermbg = palette.accent.cyan.cterm,
-	}
-)
+hi("VisualNOS", {
+	fg = palette.base.bg.gui,
+	bg = palette.accent.cyan.gui,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.accent.cyan.cterm,
+})
 hi("Pmenu", { bg = palette.base.bg.gui, ctermbg = palette.base.bg.cterm })
 hi("PmenuThumb", { bg = palette.base.gray5.gui, ctermbg = palette.base.gray5.cterm })
 hi("PmenuSbar", {})
 hi("PmenuSel", { bg = palette.base.gray4.gui, ctermbg = palette.base.gray4.cterm })
-hi(
-	"PmenuKind",
-	{
-		fg = palette.accent.cyan.gui,
-		bg = palette.base.gray3.gui,
-		ctermfg = palette.accent.cyan.cterm,
-		ctermbg = palette.base.gray3.cterm,
-	}
-)
-hi(
-	"PmenuKindSel",
-	{
-		fg = palette.accent.cyan.gui,
-		bg = palette.base.gray4.gui,
-		ctermfg = palette.accent.cyan.cterm,
-		ctermbg = palette.base.gray4.cterm,
-	}
-)
-hi(
-	"PmenuExtra",
-	{
-		fg = palette.base.gray5.gui,
-		bg = palette.base.gray3.gui,
-		ctermfg = palette.base.gray5.cterm,
-		ctermbg = palette.base.gray3.cterm,
-	}
-)
-hi(
-	"PmenuExtraSel",
-	{
-		fg = palette.base.gray6.gui,
-		bg = palette.base.gray4.gui,
-		ctermfg = palette.base.gray6.cterm,
-		ctermbg = palette.base.gray4.cterm,
-	}
-)
-hi(
-	"PmenuMatch",
-	{
-		fg = palette.accent.orange.gui,
-		bg = palette.base.gray3.gui,
-		ctermfg = palette.accent.orange.cterm,
-		ctermbg = palette.base.gray3.cterm,
-	}
-)
-hi(
-	"PmenuMatchSel",
-	{
-		fg = palette.accent.orange.gui,
-		bg = palette.base.gray4.gui,
-		ctermfg = palette.accent.orange.cterm,
-		ctermbg = palette.base.gray4.cterm,
-	}
-)
+hi("PmenuKind", {
+	fg = palette.accent.cyan.gui,
+	bg = palette.base.gray3.gui,
+	ctermfg = palette.accent.cyan.cterm,
+	ctermbg = palette.base.gray3.cterm,
+})
+hi("PmenuKindSel", {
+	fg = palette.accent.cyan.gui,
+	bg = palette.base.gray4.gui,
+	ctermfg = palette.accent.cyan.cterm,
+	ctermbg = palette.base.gray4.cterm,
+})
+hi("PmenuExtra", {
+	fg = palette.base.gray5.gui,
+	bg = palette.base.gray3.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = palette.base.gray3.cterm,
+})
+hi("PmenuExtraSel", {
+	fg = palette.base.gray6.gui,
+	bg = palette.base.gray4.gui,
+	ctermfg = palette.base.gray6.cterm,
+	ctermbg = palette.base.gray4.cterm,
+})
+hi("PmenuMatch", {
+	fg = palette.accent.orange.gui,
+	bg = palette.base.gray3.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = palette.base.gray3.cterm,
+})
+hi("PmenuMatchSel", {
+	fg = palette.accent.orange.gui,
+	bg = palette.base.gray4.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = palette.base.gray4.cterm,
+})
 hi("SignColumn", {})
 hi("Error", {
 	fg = palette.accent.red.gui,
@@ -253,15 +214,12 @@ hi("MoreMsg", { fg = palette.accent.green.gui, ctermfg = palette.accent.green.ct
 hi("Question", { fg = palette.accent.yellow_bright.gui, ctermfg = palette.accent.yellow_bright.cterm })
 hi("WarningMsg", { fg = palette.accent.pink.gui, ctermfg = palette.accent.pink.cterm })
 hi("Todo", { fg = palette.base.gray8.gui, bold = true, ctermfg = palette.base.gray8.cterm, cterm = { bold = true } })
-hi(
-	"MatchParen",
-	{
-		fg = palette.accent.magenta_bright.gui,
-		bold = true,
-		ctermfg = palette.accent.magenta_bright.cterm,
-		cterm = { bold = true },
-	}
-)
+hi("MatchParen", {
+	fg = palette.accent.magenta_bright.gui,
+	bold = true,
+	ctermfg = palette.accent.magenta_bright.cterm,
+	cterm = { bold = true },
+})
 hi("Search", {
 	fg = palette.accent.blue_bright.gui,
 	bg = palette.base.bg.gui,
@@ -294,74 +252,53 @@ hi("WildMenu", {
 	ctermbg = palette.accent.yellow_bright.cterm,
 	cterm = { bold = true },
 })
-hi(
-	"debugPC",
-	{
-		fg = palette.base.bg.gui,
-		bg = palette.accent.blue.gui,
-		ctermfg = palette.base.bg.cterm,
-		ctermbg = palette.accent.blue.cterm,
-	}
-)
-hi(
-	"debugBreakpoint",
-	{
-		fg = palette.base.bg.gui,
-		bg = palette.accent.pink.gui,
-		ctermfg = palette.base.bg.cterm,
-		ctermbg = palette.accent.pink.cterm,
-	}
-)
+hi("debugPC", {
+	fg = palette.base.bg.gui,
+	bg = palette.accent.blue.gui,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.accent.blue.cterm,
+})
+hi("debugBreakpoint", {
+	fg = palette.base.bg.gui,
+	bg = palette.accent.pink.gui,
+	ctermfg = palette.base.bg.cterm,
+	ctermbg = palette.accent.pink.cterm,
+})
 hi("Cursor", { fg = palette.base.black.gui, bg = palette.base.gray8.gui })
 hi("lCursor", { fg = palette.base.bg.gui, bg = palette.base.bright_green.gui })
 hi("CursorLine", { bg = palette.base.gray2.gui, ctermbg = palette.base.gray2.cterm })
 hi("CursorColumn", { bg = palette.base.gray2.gui, ctermbg = palette.base.gray2.cterm })
-hi(
-	"Folded",
-	{
-		fg = palette.base.gray6.gui,
-		bg = palette.base.gray1.gui,
-		ctermfg = palette.base.gray6.cterm,
-		ctermbg = palette.base.gray1.cterm,
-	}
-)
+hi("Folded", {
+	fg = palette.base.gray6.gui,
+	bg = palette.base.gray1.gui,
+	ctermfg = palette.base.gray6.cterm,
+	ctermbg = palette.base.gray1.cterm,
+})
 hi("ColorColumn", { bg = palette.base.gray3.gui, ctermbg = palette.base.gray3.cterm })
-hi(
-	"SpellBad",
-	{
-		sp = palette.accent.red_bright.gui,
-		undercurl = true,
-		ctermfg = palette.accent.red_bright.cterm,
-		cterm = { underline = true },
-	}
-)
-hi(
-	"SpellCap",
-	{
-		sp = palette.accent.orange.gui,
-		undercurl = true,
-		ctermfg = palette.accent.orange.cterm,
-		cterm = { underline = true },
-	}
-)
-hi(
-	"SpellLocal",
-	{
-		sp = palette.accent.green_bright.gui,
-		undercurl = true,
-		ctermfg = palette.accent.green_bright.cterm,
-		cterm = { underline = true },
-	}
-)
-hi(
-	"SpellRare",
-	{
-		sp = palette.accent.magenta.gui,
-		undercurl = true,
-		ctermfg = palette.accent.magenta.cterm,
-		cterm = { underline = true },
-	}
-)
+hi("SpellBad", {
+	sp = palette.accent.red_bright.gui,
+	undercurl = true,
+	ctermfg = palette.accent.red_bright.cterm,
+	cterm = { underline = true },
+})
+hi("SpellCap", {
+	sp = palette.accent.orange.gui,
+	undercurl = true,
+	ctermfg = palette.accent.orange.cterm,
+	cterm = { underline = true },
+})
+hi("SpellLocal", {
+	sp = palette.accent.green_bright.gui,
+	undercurl = true,
+	ctermfg = palette.accent.green_bright.cterm,
+	cterm = { underline = true },
+})
+hi("SpellRare", {
+	sp = palette.accent.magenta.gui,
+	undercurl = true,
+	ctermfg = palette.accent.magenta.cterm,
+	cterm = { underline = true },
+})
 hi("Comment", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
 hi("Constant", { fg = palette.accent.pink.gui, ctermfg = palette.accent.pink.cterm })
 hi("String", { fg = palette.accent.green.gui, ctermfg = palette.accent.green.cterm })
@@ -373,15 +310,12 @@ hi("Type", { fg = palette.accent.blue.gui, ctermfg = palette.accent.blue.cterm }
 hi("Special", { fg = palette.accent.cyan.gui, ctermfg = palette.accent.cyan.cterm })
 hi("Underlined", { underline = true, cterm = { underline = true } })
 hi("Title", { bold = true, cterm = { bold = true } })
-hi(
-	"Directory",
-	{
-		fg = palette.accent.cyan_light.gui,
-		bold = true,
-		ctermfg = palette.accent.cyan_light.cterm,
-		cterm = { bold = true },
-	}
-)
+hi("Directory", {
+	fg = palette.accent.cyan_light.gui,
+	bold = true,
+	ctermfg = palette.accent.cyan_light.cterm,
+	cterm = { bold = true },
+})
 hi("Conceal", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
 hi("Ignore", {})
 hi("Debug", { fg = palette.accent.cyan.gui, ctermfg = palette.accent.cyan.cterm })
@@ -395,7 +329,12 @@ hi(
 )
 hi(
 	"DiffText",
-	{ fg = palette.accent.purple.gui, reverse = true, ctermfg = palette.accent.purple.cterm, cterm = { reverse = true } }
+	{
+		fg = palette.accent.purple.gui,
+		reverse = true,
+		ctermfg = palette.accent.purple.cterm,
+		cterm = { reverse = true },
+	}
 )
 hi(
 	"DiffDelete",
@@ -407,15 +346,12 @@ hi("Removed", { fg = palette.accent.red_bright.gui, ctermfg = palette.accent.red
 
 -- Markdown highlights
 -- Headers - descending hierarchy with bold for top levels
-hi(
-	"markdownH1",
-	{
-		fg = palette.accent.blue_bright.gui,
-		bold = true,
-		ctermfg = palette.accent.blue_bright.cterm,
-		cterm = { bold = true },
-	}
-)
+hi("markdownH1", {
+	fg = palette.accent.blue_bright.gui,
+	bold = true,
+	ctermfg = palette.accent.blue_bright.cterm,
+	cterm = { bold = true },
+})
 hi(
 	"markdownH2",
 	{ fg = palette.accent.blue.gui, bold = true, ctermfg = palette.accent.blue.cterm, cterm = { bold = true } }
@@ -440,15 +376,12 @@ hi("markdownCodeBlock", { fg = palette.accent.yellow.gui, ctermfg = palette.acce
 hi("markdownCodeDelimiter", { fg = palette.accent.cyan.gui, ctermfg = palette.accent.cyan.cterm })
 
 -- Links - using the existing markdownUrl link and expanding
-hi(
-	"markdownLink",
-	{
-		fg = palette.accent.cyan_light.gui,
-		underline = true,
-		ctermfg = palette.accent.cyan_light.cterm,
-		cterm = { underline = true },
-	}
-)
+hi("markdownLink", {
+	fg = palette.accent.cyan_light.gui,
+	underline = true,
+	ctermfg = palette.accent.cyan_light.cterm,
+	cterm = { underline = true },
+})
 hi("markdownLinkText", { fg = palette.accent.blue_bright.gui, ctermfg = palette.accent.blue_bright.cterm })
 hi("markdownLinkDelimiter", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
 hi("markdownUrlDelimiter", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
@@ -476,15 +409,12 @@ hi("markdownEscape", { fg = palette.accent.cyan.gui, ctermfg = palette.accent.cy
 
 -- Treesitter Markdown highlights (for nvim-treesitter users)
 -- Headers
-hi(
-	"@markup.heading.1.markdown",
-	{
-		fg = palette.accent.blue_bright.gui,
-		bold = true,
-		ctermfg = palette.accent.blue_bright.cterm,
-		cterm = { bold = true },
-	}
-)
+hi("@markup.heading.1.markdown", {
+	fg = palette.accent.blue_bright.gui,
+	bold = true,
+	ctermfg = palette.accent.blue_bright.cterm,
+	cterm = { bold = true },
+})
 hi(
 	"@markup.heading.2.markdown",
 	{ fg = palette.accent.blue.gui, bold = true, ctermfg = palette.accent.blue.cterm, cterm = { bold = true } }
@@ -510,15 +440,12 @@ hi(
 	"@markup.link.label.markdown_inline",
 	{ fg = palette.accent.blue_bright.gui, ctermfg = palette.accent.blue_bright.cterm }
 )
-hi(
-	"@markup.link.url.markdown_inline",
-	{
-		fg = palette.accent.cyan_light.gui,
-		underline = true,
-		ctermfg = palette.accent.cyan_light.cterm,
-		cterm = { underline = true },
-	}
-)
+hi("@markup.link.url.markdown_inline", {
+	fg = palette.accent.cyan_light.gui,
+	underline = true,
+	ctermfg = palette.accent.cyan_light.cterm,
+	cterm = { underline = true },
+})
 hi("@markup.link.markdown_inline", { fg = palette.accent.green.gui, ctermfg = palette.accent.green.cterm })
 
 -- Lists
@@ -577,8 +504,24 @@ hi("NeoTreeIndentMarker", { fg = palette.base.gray4.gui, ctermfg = palette.base.
 hi("NeoTreeExpander", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
 
 -- Window UI
-hi("NeoTreeNormal", { fg = palette.base.fg.gui, bg = palette.base.bg.gui, ctermfg = palette.base.fg.cterm, ctermbg = palette.base.bg.cterm })
-hi("NeoTreeNormalNC", { fg = palette.base.fg.gui, bg = palette.base.bg.gui, ctermfg = palette.base.fg.cterm, ctermbg = palette.base.bg.cterm })
+hi(
+	"NeoTreeNormal",
+	{
+		fg = palette.base.fg.gui,
+		bg = palette.base.bg.gui,
+		ctermfg = palette.base.fg.cterm,
+		ctermbg = palette.base.bg.cterm,
+	}
+)
+hi(
+	"NeoTreeNormalNC",
+	{
+		fg = palette.base.fg.gui,
+		bg = palette.base.bg.gui,
+		ctermfg = palette.base.fg.cterm,
+		ctermbg = palette.base.bg.cterm,
+	}
+)
 hi("NeoTreeSignColumn", { bg = palette.base.bg.gui, ctermbg = palette.base.bg.cterm })
 hi("NeoTreeCursorLine", { bg = palette.base.gray2.gui, ctermbg = palette.base.gray2.cterm })
 
