@@ -15,8 +15,9 @@ end
 vim.g.colors_name = "hubbamax"
 vim.o.background = "dark"
 
--- Import color palette
+-- Import color palette and config
 local palette = require("hubbamax.palette")
+local config = require("hubbamax.config")
 
 -- Terminal colors
 local has_termguicolors = vim.fn.has("termguicolors") == 1
@@ -98,52 +99,52 @@ end
 -- Main highlight groups (GUI/true color)
 hi("Normal", {
 	fg = palette.base.fg.gui,
-	bg = palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 	ctermfg = palette.base.fg.cterm,
-	ctermbg = palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
 })
 hi("StatusLine", {
-	fg = palette.base.bg.gui,
-	bg = palette.base.gray6.gui,
-	ctermfg = palette.base.bg.cterm,
-	ctermbg = palette.base.gray6.cterm,
+	fg = config.options.transparent_background and palette.base.gray6.gui or palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray6.gui,
+	ctermfg = config.options.transparent_background and palette.base.gray6.cterm or palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray6.cterm,
 })
 hi("StatusLineNC", {
-	fg = palette.base.bg.gui,
-	bg = palette.base.gray5.gui,
-	ctermfg = palette.base.bg.cterm,
-	ctermbg = palette.base.gray5.cterm,
+	fg = config.options.transparent_background and palette.base.gray5.gui or palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray5.gui,
+	ctermfg = config.options.transparent_background and palette.base.gray5.cterm or palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray5.cterm,
 })
 hi("VertSplit", {
 	fg = palette.base.gray2.gui,
-	bg = palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 	ctermfg = palette.base.gray2.cterm,
-	ctermbg = palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
 })
 hi("WinSeparator", {
 	fg = palette.base.gray2.gui,
-	bg = palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 	ctermfg = palette.base.gray2.cterm,
-	ctermbg = palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
 })
 hi("TabLine", {
-	fg = palette.base.bg.gui,
-	bg = palette.base.gray5.gui,
-	ctermfg = palette.base.bg.cterm,
-	ctermbg = palette.base.gray5.cterm,
+	fg = config.options.transparent_background and palette.base.gray5.gui or palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray5.gui,
+	ctermfg = config.options.transparent_background and palette.base.gray5.cterm or palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray5.cterm,
 })
 hi("TabLineFill", {
-	fg = palette.base.bg.gui,
-	bg = palette.base.gray5.gui,
-	ctermfg = palette.base.bg.cterm,
-	ctermbg = palette.base.gray5.cterm,
+	fg = config.options.transparent_background and palette.base.gray5.gui or palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray5.gui,
+	ctermfg = config.options.transparent_background and palette.base.gray5.cterm or palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray5.cterm,
 })
 hi("TabLineSel", {
-	fg = palette.base.bg.gui,
-	bg = palette.base.gray6.gui,
+	fg = config.options.transparent_background and palette.base.gray6.gui or palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray6.gui,
 	bold = true,
-	ctermfg = palette.base.bg.cterm,
-	ctermbg = palette.base.gray6.cterm,
+	ctermfg = config.options.transparent_background and palette.base.gray6.cterm or palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray6.cterm,
 	cterm = { bold = true },
 })
 hi("ToolbarLine", {})
@@ -225,20 +226,28 @@ hi("PmenuMatchSel", {
 	ctermfg = palette.accent.orange.cterm,
 	ctermbg = palette.base.gray4.cterm,
 })
-hi("SignColumn", {})
+hi("SignColumn", {
+	bg = config.options.transparent_background and "NONE" or nil,
+	ctermbg = config.options.transparent_background and "NONE" or nil,
+})
 hi("NormalFloat", {
 	fg = palette.base.fg.gui,
-	bg = palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 	ctermfg = palette.base.fg.cterm,
-	ctermbg = palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
 })
-hi("FloatBorder", { fg = palette.base.gray5.gui, bg = palette.base.bg.gui, ctermfg = palette.base.gray5.cterm, ctermbg = palette.base.bg.cterm })
+hi("FloatBorder", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
+})
 hi("FloatTitle", {
 	fg = palette.accent.blue_bright.gui,
-	bg = palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 	bold = true,
 	ctermfg = palette.accent.blue_bright.cterm,
-	ctermbg = palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
 	cterm = { bold = true },
 })
 hi("Error", {
@@ -395,13 +404,18 @@ hi("Removed", { fg = palette.accent.red_bright.gui, ctermfg = palette.accent.red
 -- Neovim-specific UI elements
 hi("WinBar", {
 	fg = palette.base.gray6.gui,
-	bg = palette.base.bg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 	bold = true,
 	ctermfg = palette.base.gray6.cterm,
-	ctermbg = palette.base.bg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
 	cterm = { bold = true },
 })
-hi("WinBarNC", { fg = palette.base.gray5.gui, bg = palette.base.bg.gui, ctermfg = palette.base.gray5.cterm, ctermbg = palette.base.bg.cterm })
+hi("WinBarNC", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
+})
 hi("Whitespace", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
 
 -- LSP Diagnostics
@@ -658,21 +672,24 @@ hi(
 	"NeoTreeNormal",
 	{
 		fg = palette.base.fg.gui,
-		bg = palette.base.bg.gui,
+		bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 		ctermfg = palette.base.fg.cterm,
-		ctermbg = palette.base.bg.cterm,
+		ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
 	}
 )
 hi(
 	"NeoTreeNormalNC",
 	{
 		fg = palette.base.fg.gui,
-		bg = palette.base.bg.gui,
+		bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 		ctermfg = palette.base.fg.cterm,
-		ctermbg = palette.base.bg.cterm,
+		ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
 	}
 )
-hi("NeoTreeSignColumn", { bg = palette.base.bg.gui, ctermbg = palette.base.bg.cterm })
+hi("NeoTreeSignColumn", {
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
+})
 hi("NeoTreeCursorLine", { bg = palette.base.gray2.gui, ctermbg = palette.base.gray2.cterm })
 
 -- Title bar
@@ -740,3 +757,422 @@ hi("NeoTreeFileIcon", { fg = palette.base.fg.gui, ctermfg = palette.base.fg.cter
 
 -- Window picker
 hi("NeoTreeWindowsHidden", { fg = palette.base.gray4.gui, ctermfg = palette.base.gray4.cterm })
+
+-- BufferLine highlights (akinsho/bufferline.nvim)
+-- Fill and separators
+hi("BufferLineFill", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray1.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray1.cterm,
+})
+hi("BufferLineSeparator", {
+	fg = palette.base.gray1.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray1.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineSeparatorVisible", {
+	fg = palette.base.gray1.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray1.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineSeparatorSelected", {
+	fg = palette.base.gray1.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	ctermfg = palette.base.gray1.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+})
+
+-- Buffers (inactive)
+hi("BufferLineBackground", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineBuffer", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+
+-- Buffers (visible but not active)
+hi("BufferLineBufferVisible", {
+	fg = palette.base.gray6.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray6.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+
+-- Buffers (selected/active)
+hi("BufferLineBufferSelected", {
+	fg = palette.base.fg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.base.fg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+
+-- Numbers
+hi("BufferLineNumbers", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineNumbersVisible", {
+	fg = palette.base.gray6.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray6.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineNumbersSelected", {
+	fg = palette.base.fg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.base.fg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+
+-- Close button
+hi("BufferLineCloseButton", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineCloseButtonVisible", {
+	fg = palette.base.gray6.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray6.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineCloseButtonSelected", {
+	fg = palette.accent.red.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	ctermfg = palette.accent.red.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+})
+
+-- Modified indicator
+hi("BufferLineModified", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineModifiedVisible", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineModifiedSelected", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+})
+
+-- Duplicate
+hi("BufferLineDuplicate", {
+	fg = palette.base.gray4.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	italic = true,
+	ctermfg = palette.base.gray4.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+	cterm = { italic = true },
+})
+hi("BufferLineDuplicateVisible", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	italic = true,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+	cterm = { italic = true },
+})
+hi("BufferLineDuplicateSelected", {
+	fg = palette.base.gray6.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	italic = true,
+	ctermfg = palette.base.gray6.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { italic = true },
+})
+
+-- Tabs
+hi("BufferLineTab", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineTabSelected", {
+	fg = palette.base.fg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.base.fg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+hi("BufferLineTabClose", {
+	fg = palette.accent.red.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.red.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+
+-- Indicators
+hi("BufferLineIndicatorSelected", {
+	fg = palette.accent.blue_bright.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	ctermfg = palette.accent.blue_bright.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+})
+hi("BufferLineIndicatorVisible", {
+	fg = palette.base.gray4.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray4.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+
+-- Diagnostics - Error
+hi("BufferLineError", {
+	fg = palette.accent.red.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.red.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineErrorVisible", {
+	fg = palette.accent.red.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.red.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineErrorSelected", {
+	fg = palette.accent.red.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.red.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+hi("BufferLineErrorDiagnostic", {
+	fg = palette.accent.red.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.red.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineErrorDiagnosticVisible", {
+	fg = palette.accent.red.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.red.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineErrorDiagnosticSelected", {
+	fg = palette.accent.red.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.red.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+
+-- Diagnostics - Warning
+hi("BufferLineWarning", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineWarningVisible", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineWarningSelected", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+hi("BufferLineWarningDiagnostic", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineWarningDiagnosticVisible", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineWarningDiagnosticSelected", {
+	fg = palette.accent.orange.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.orange.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+
+-- Diagnostics - Info
+hi("BufferLineInfo", {
+	fg = palette.accent.blue_bright.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.blue_bright.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineInfoVisible", {
+	fg = palette.accent.blue_bright.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.blue_bright.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineInfoSelected", {
+	fg = palette.accent.blue_bright.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.blue_bright.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+hi("BufferLineInfoDiagnostic", {
+	fg = palette.accent.blue_bright.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.blue_bright.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineInfoDiagnosticVisible", {
+	fg = palette.accent.blue_bright.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.blue_bright.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineInfoDiagnosticSelected", {
+	fg = palette.accent.blue_bright.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.blue_bright.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+
+-- Diagnostics - Hint
+hi("BufferLineHint", {
+	fg = palette.accent.cyan.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.cyan.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineHintVisible", {
+	fg = palette.accent.cyan.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.cyan.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineHintSelected", {
+	fg = palette.accent.cyan.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.cyan.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+hi("BufferLineHintDiagnostic", {
+	fg = palette.accent.cyan.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.cyan.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineHintDiagnosticVisible", {
+	fg = palette.accent.cyan.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.accent.cyan.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+hi("BufferLineHintDiagnosticSelected", {
+	fg = palette.accent.cyan.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.cyan.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+
+-- Pick mode
+hi("BufferLinePick", {
+	fg = palette.accent.pink.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	bold = true,
+	ctermfg = palette.accent.pink.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+	cterm = { bold = true },
+})
+hi("BufferLinePickVisible", {
+	fg = palette.accent.pink.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	bold = true,
+	ctermfg = palette.accent.pink.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+	cterm = { bold = true },
+})
+hi("BufferLinePickSelected", {
+	fg = palette.accent.pink.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray3.gui,
+	bold = true,
+	ctermfg = palette.accent.pink.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray3.cterm,
+	cterm = { bold = true },
+})
+
+-- Offset separator
+hi("BufferLineOffsetSeparator", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray1.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray1.cterm,
+})
+
+-- Truncation marker
+hi("BufferLineTruncMarker", {
+	fg = palette.base.gray5.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray1.gui,
+	ctermfg = palette.base.gray5.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray1.cterm,
+})
+
+-- Group label
+hi("BufferLineGroupLabel", {
+	fg = palette.base.gray6.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	bold = true,
+	ctermfg = palette.base.gray6.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+	cterm = { bold = true },
+})
+hi("BufferLineGroupSeparator", {
+	fg = palette.base.gray1.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.gray2.gui,
+	ctermfg = palette.base.gray1.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.gray2.cterm,
+})
+
+-- Module export
+return {
+	setup = function(opts)
+		config.setup(opts)
+		-- Clear theme caches so they pick up the new config
+		package.loaded["lualine.themes.hubbamax"] = nil
+		package.loaded["bufferline.themes.hubbamax"] = nil
+	end,
+}
