@@ -49,6 +49,30 @@ Or in Vimscript:
 colorscheme hubbamax
 ```
 
+## Configuration
+
+Hubbamax can be configured with the following options:
+
+```lua
+require('hubbamax').setup({
+  transparent_background = false, -- Enable transparent background
+})
+```
+
+### Transparent Background
+
+To use a transparent background (allowing your terminal background to show through):
+
+```lua
+require('hubbamax').setup({
+  transparent_background = true,
+})
+
+vim.cmd('colorscheme hubbamax')
+```
+
+This affects the main editor background as well as statusline and bufferline themes.
+
 ## Using this with Ghostty
 
 To use this colorscheme with [Ghostty](https://ghostty.org/), copy `hubbamax.ghostty` to your Ghostty themes folder (usually `~/.ghostty/themes/`), and select it in your Ghostty configuration.
