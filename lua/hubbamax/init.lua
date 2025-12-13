@@ -157,10 +157,7 @@ hi("ToolbarButton", {
 	ctermbg = palette.base.bg.cterm,
 	cterm = { bold = true, reverse = true },
 })
-hi(
-	"QuickFixLine",
-	{ bg = palette.accent.blue.gui, ctermfg = palette.base.bg.cterm, ctermbg = palette.accent.blue.cterm }
-)
+hi("QuickFixLine", { bg = palette.base.gray4.gui, ctermfg = palette.base.bg.cterm, ctermbg = palette.base.gray4.cterm })
 hi(
 	"CursorLineNr",
 	{ fg = palette.base.gray8.gui, bold = true, ctermfg = palette.base.gray8.cterm, cterm = { bold = true } }
@@ -384,15 +381,12 @@ hi(
 	"DiffChange",
 	{ fg = palette.accent.blue.gui, reverse = true, ctermfg = palette.accent.blue.cterm, cterm = { reverse = true } }
 )
-hi(
-	"DiffText",
-	{
-		fg = palette.accent.purple.gui,
-		reverse = true,
-		ctermfg = palette.accent.purple.cterm,
-		cterm = { reverse = true },
-	}
-)
+hi("DiffText", {
+	fg = palette.accent.purple.gui,
+	reverse = true,
+	ctermfg = palette.accent.purple.cterm,
+	cterm = { reverse = true },
+})
 hi(
 	"DiffDelete",
 	{ fg = palette.accent.red.gui, reverse = true, ctermfg = palette.accent.red.cterm, cterm = { reverse = true } }
@@ -668,24 +662,18 @@ hi("NeoTreeIndentMarker", { fg = palette.base.gray4.gui, ctermfg = palette.base.
 hi("NeoTreeExpander", { fg = palette.base.gray5.gui, ctermfg = palette.base.gray5.cterm })
 
 -- Window UI
-hi(
-	"NeoTreeNormal",
-	{
-		fg = palette.base.fg.gui,
-		bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
-		ctermfg = palette.base.fg.cterm,
-		ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
-	}
-)
-hi(
-	"NeoTreeNormalNC",
-	{
-		fg = palette.base.fg.gui,
-		bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
-		ctermfg = palette.base.fg.cterm,
-		ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
-	}
-)
+hi("NeoTreeNormal", {
+	fg = palette.base.fg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
+	ctermfg = palette.base.fg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
+})
+hi("NeoTreeNormalNC", {
+	fg = palette.base.fg.gui,
+	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
+	ctermfg = palette.base.fg.cterm,
+	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
+})
 hi("NeoTreeSignColumn", {
 	bg = config.options.transparent_background and "NONE" or palette.base.bg.gui,
 	ctermbg = config.options.transparent_background and "NONE" or palette.base.bg.cterm,
